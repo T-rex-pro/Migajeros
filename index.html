@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi portafolio JavaScript</title>
+
+    <link rel="stylesheet" href="mi_estilo.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Mi portafolio JavaScript 🚀</h1>
+
+    <p><strong>Equipo:</strong></p>
+    <p>Said Mascorro Zaragoza</p>
+    <p>Alina Regina Rodríguez Acosta</p>
+    <p>Bárbara Hernández Díaz</p>
+    <p>Alma Cristina Magaña Miranda</p>
+
+    <p><strong>Campus:</strong> Mérida</p>
+    <p><strong>Docente:</strong> Guillermo Peña</p>
+
+    <!-- Marquesina -->
+    <h2 id="mensaje"></h2>
+</header>
+
+<nav>
+    <a href="#">Inicio</a>
+    <a href="#">Sobre nosotros</a>
+    <a href="#">Proyectos</a>
+    <a href="marquesina.html">Marquesina aparte</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2>👋 Bienvenido</h2>
+        <p>Este es nuestro portafolio usando HTML, CSS y JavaScript.</p>
+    </div>
+
+    <div class="card">
+        <h2>📚 Sobre nosotros</h2>
+        <p>Somos estudiantes de preparatoria aprendiendo programación en equipo.</p>
+    </div>
+
+    <div class="card">
+        <h2>💡 Proyectos</h2>
+        <p>Incluye una marquesina interactiva desarrollada con JavaScript.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Equipo JavaScript</p>
+</footer>
+
+<script>
+    let texto = "Bienvenido a nuestro portafolio JavaScript 🚀   ";
+
+    function moverTexto() {
+        texto = texto.substring(1) + texto.charAt(0);
+        document.getElementById("mensaje").textContent = texto;
+    }
+
+    setInterval(moverTexto, 150);
+</script>
+
+</body>
+</html>
