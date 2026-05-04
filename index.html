@@ -1,121 +1,186 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi portafolio JavaScript</title>
+  <meta charset="UTF-8">
+  <title>Energía asequible y no contaminante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="mi_estilo.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Librerías -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      display: none;
+      border-radius: 10px;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      background: #2e7d32;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #1b5e20;
+      color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #a5d6a7;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Mi portafolio JavaScript 🚀</h1>
-
-    <p><strong>Equipo:</strong></p>
-    <p>Said Mascorro Zaragoza</p>
-    <p>Alina Regina Rodríguez Acosta</p>
-    <p>Bárbara Hernández Díaz</p>
-    <p>Alma Cristina Magaña Miranda</p>
-
-    <p><strong>Campus:</strong> Mérida</p>
-    <p><strong>Docente:</strong> Guillermo Peña</p>
-
-    <h2 id="mensaje"></h2>
+  <h1>Energía asequible y no contaminante</h1>
+  <p>Un futuro sostenible para todos</p>
 </header>
 
-<nav>
-    <a href="#">Inicio</a>
-    <a href="#">Sobre nosotros</a>
-    <a href="#">Proyectos</a>
-</nav>
+<section>
+  <h2>🌍 Introducción</h2>
+  <p>
+    La energía asequible y no contaminante es clave para el desarrollo sostenible.
+    Permite reducir emisiones contaminantes y combatir el cambio climático mediante fuentes renovables como el sol, el viento y el agua.
+  </p>
+</section>
 
-<div class="container">
+<section>
+  <h2>🖼️ Carrusel de imágenes</h2>
 
-    <div class="card">
-        <h2>👋 Bienvenido</h2>
-        <p>Este es nuestro portafolio usando HTML, CSS y JavaScript.</p>
-    </div>
+  <div class="carousel">
+    <img src="https://image.slidesharecdn.com/energiaasequibleynocontaminantepawerzully-170717162908/85/Energia-asequible-y-no-contaminante-pawer-zully-1-320.jpg" class="active">
 
-    <!-- 📊 GRÁFICA -->
-    <div class="card">
-        <h2>📊 Uso de redes sociales</h2>
-        <canvas id="miGrafica"></canvas>
-    </div>
+    <img src="https://revista.une.org/images/revistas/articulos/1976e34cfe00683c15582f3460b25236.jpg">
+  </div>
 
-    <!-- ❓ FAQ -->
-    <div class="card">
-        <h2>❓ Preguntas frecuentes</h2>
+  <div class="buttons">
+    <button onclick="prev()">Anterior</button>
+    <button onclick="next()">Siguiente</button>
+  </div>
+</section>
 
-        <div class="accordion">
-            <div class="accordion-header">¿Qué es ciudadanía digital?</div>
-            <div class="accordion-content">Es el uso responsable de internet.</div>
+<section>
+  <h2>📊 Datos reales sobre energía renovable</h2>
+  <p>
+    Las energías renovables están creciendo en todo el mundo. Muchos países ya superan el 80% de generación limpia en ciertos periodos del año.
+  </p>
 
-            <div class="accordion-header">¿Por qué es importante?</div>
-            <div class="accordion-content">Para evitar riesgos y usar bien la tecnología.</div>
-        </div>
-    </div>
+  <canvas id="grafico"></canvas>
+</section>
 
-    <!-- 🗺️ MAPA -->
-    <div class="card">
-        <h2>📍 Nuestra ubicación</h2>
-        <div id="mapa" style="height: 300px;"></div>
-    </div>
+<section>
+  <h2>⚡ Tipos de energías limpias</h2>
+  <ul>
+    <li><strong>Energía solar:</strong> del sol.</li>
+    <li><strong>Energía eólica:</strong> del viento.</li>
+    <li><strong>Hidroeléctrica:</strong> del agua.</li>
+    <li><strong>Geotérmica:</strong> del calor de la Tierra.</li>
+    <li><strong>Biomasa:</strong> materia orgánica.</li>
+  </ul>
+</section>
 
-</div>
+<section>
+  <h2>🌱 Importancia</h2>
+  <p>
+    Estas energías ayudan a reducir la contaminación, combatir el cambio climático y garantizar acceso energético sostenible.
+  </p>
+</section>
 
 <footer>
-    <p>© 2026 Equipo JavaScript</p>
+  <h2>📚 Saber más</h2>
+  <ul>
+    <li><a href="https://unsplash.com" target="_blank">Unsplash</a></li>
+    <li><a href="https://www.pexels.com" target="_blank">Pexels</a></li>
+    <li><a href="https://pixabay.com" target="_blank">Pixabay</a></li>
+    <li><a href="https://revista.une.org" target="_blank">Revista UNE</a></li>
+  </ul>
 </footer>
 
-<!-- Leaflet -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 <script>
-/* ===== Marquesina ===== */
-let texto = "Bienvenido a nuestro portafolio JavaScript 🚀   ";
+  let index = 0;
+  const images = document.querySelectorAll(".carousel img");
 
-function moverTexto() {
-    texto = texto.substring(1) + texto.charAt(0);
-    document.getElementById("mensaje").textContent = texto;
-}
-setInterval(moverTexto, 150);
+  function showImage(i) {
+    images.forEach(img => img.classList.remove("active"));
+    images[i].classList.add("active");
+  }
 
-/* ===== Gráfica ===== */
-const ctx = document.getElementById('miGrafica');
+  function next() {
+    index = (index + 1) % images.length;
+    showImage(index);
+  }
 
-new Chart(ctx, {
+  function prev() {
+    index = (index - 1 + images.length) % images.length;
+    showImage(index);
+  }
+
+  // Gráfico (ejemplo realista global)
+  const ctx = document.getElementById('grafico');
+
+  new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Instagram', 'TikTok', 'Facebook'],
-        datasets: [{
-            label: 'Horas por día',
-            data: [3, 4, 2],
-            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-        }]
+      labels: ['Solar', 'Eólica', 'Hidroeléctrica', 'Otras'],
+      datasets: [{
+        label: 'Uso global de energía renovable (%)',
+        data: [18, 30, 40, 12],
+        backgroundColor: ['#ffca28','#29b6f6','#66bb6a','#8d6e63']
+      }]
     }
-});
-
-/* ===== FAQ jQuery ===== */
-$(".accordion-header").click(function() {
-    $(this).next(".accordion-content").slideToggle();
-});
-
-/* ===== Mapa ===== */
-var map = L.map('mapa').setView([20.967, -89.623], 13);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
-
-L.marker([20.967, -89.623]).addTo(map)
-    .bindPopup('Estamos en Mérida 🚀')
-    .openPopup();
-
+  });
 </script>
 
 </body>
