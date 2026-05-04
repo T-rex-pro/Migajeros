@@ -6,6 +6,11 @@
     <title>Mi portafolio JavaScript</title>
 
     <link rel="stylesheet" href="mi_estilo.css">
+
+    <!-- Librerías -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
@@ -22,7 +27,6 @@
     <p><strong>Campus:</strong> Mérida</p>
     <p><strong>Docente:</strong> Guillermo Peña</p>
 
-    <!-- Marquesina -->
     <h2 id="mensaje"></h2>
 </header>
 
@@ -30,7 +34,6 @@
     <a href="#">Inicio</a>
     <a href="#">Sobre nosotros</a>
     <a href="#">Proyectos</a>
-    <a href="marquesina.html">Marquesina aparte</a>
 </nav>
 
 <div class="container">
@@ -40,14 +43,29 @@
         <p>Este es nuestro portafolio usando HTML, CSS y JavaScript.</p>
     </div>
 
+    <!-- 📊 GRÁFICA -->
     <div class="card">
-        <h2>📚 Sobre nosotros</h2>
-        <p>Somos estudiantes de preparatoria aprendiendo programación en equipo.</p>
+        <h2>📊 Uso de redes sociales</h2>
+        <canvas id="miGrafica"></canvas>
     </div>
 
+    <!-- ❓ FAQ -->
     <div class="card">
-        <h2>💡 Proyectos</h2>
-        <p>Incluye una marquesina interactiva desarrollada con JavaScript.</p>
+        <h2>❓ Preguntas frecuentes</h2>
+
+        <div class="accordion">
+            <div class="accordion-header">¿Qué es ciudadanía digital?</div>
+            <div class="accordion-content">Es el uso responsable de internet.</div>
+
+            <div class="accordion-header">¿Por qué es importante?</div>
+            <div class="accordion-content">Para evitar riesgos y usar bien la tecnología.</div>
+        </div>
+    </div>
+
+    <!-- 🗺️ MAPA -->
+    <div class="card">
+        <h2>📍 Nuestra ubicación</h2>
+        <div id="mapa" style="height: 300px;"></div>
     </div>
 
 </div>
@@ -56,15 +74,48 @@
     <p>© 2026 Equipo JavaScript</p>
 </footer>
 
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <script>
-    let texto = "Bienvenido a nuestro portafolio JavaScript 🚀   ";
+/* ===== Marquesina ===== */
+let texto = "Bienvenido a nuestro portafolio JavaScript 🚀   ";
 
-    function moverTexto() {
-        texto = texto.substring(1) + texto.charAt(0);
-        document.getElementById("mensaje").textContent = texto;
+function moverTexto() {
+    texto = texto.substring(1) + texto.charAt(0);
+    document.getElementById("mensaje").textContent = texto;
+}
+setInterval(moverTexto, 150);
+
+/* ===== Gráfica ===== */
+const ctx = document.getElementById('miGrafica');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Instagram', 'TikTok', 'Facebook'],
+        datasets: [{
+            label: 'Horas por día',
+            data: [3, 4, 2],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
+        }]
     }
+});
 
-    setInterval(moverTexto, 150);
+/* ===== FAQ jQuery ===== */
+$(".accordion-header").click(function() {
+    $(this).next(".accordion-content").slideToggle();
+});
+
+/* ===== Mapa ===== */
+var map = L.map('mapa').setView([20.967, -89.623], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+L.marker([20.967, -89.623]).addTo(map)
+    .bindPopup('Estamos en Mérida 🚀')
+    .openPopup();
+
 </script>
 
 </body>
